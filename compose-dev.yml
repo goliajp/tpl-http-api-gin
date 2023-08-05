@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: dev-postgres
+    image: postgres
+    volumes:
+      - ./.dev/postgres-data/postgres:/var/lib/postgresql/data
+    environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+    restart: always
+  redis:
+    container_name: dev-redis
+    image: redis
+    ports:
+      - "6379:6379"
+    restart: always
